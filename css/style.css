@@ -1,0 +1,19 @@
+﻿/* css/style.css */
+:root { --primary: #137fec; }
+
+.nav-btn {
+  @apply inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-200;
+  background: #f1f5f9;
+}
+
+.card {
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+
+/* 간단한 sticky table 헤더 */
+.table-sticky thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 1;
+}

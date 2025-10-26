@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>채용 업무 대시보드</title>
+  <link rel="icon" href="data:image/x-icon;base64," type="image/x-icon"/>
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+  <!-- Fonts -->
+  <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;600;800&family=Work+Sans:wght@400;600;800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body class="bg-slate-50" style='font-family: "Work Sans","Noto Sans",sans-serif'>
+  <!-- Header -->
+  <header class="flex items-center justify-between border-b border-slate-200 px-6 py-3">
+    <div class="flex items-center gap-3 text-slate-900">
+      <div class="size-8 text-[#137fec]">
+        <svg fill="currentColor" viewBox="0 0 48 48"><path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"/></svg>
+      </div>
+      <h1 class="text-lg sm:text-xl font-bold tracking-tight">채용 업무 대시보드</h1>
+    </div>
+
+    <nav class="flex items-center gap-1">
+      <a href="#/requisition" class="nav-btn data-[active=true]:bg-[#137fec] data-[active=true]:text-white">채용 품의</a>
+      <a href="#/workforce" class="nav-btn data-[active=true]:bg-[#137fec] data-[active=true]:text-white">인력 계획</a>
+      <button id="export-all" class="inline-flex items-center gap-1 rounded-md bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-200">
+        <span class="material-symbols-outlined text-base">download</span> 전체 내보내기
+      </button>
+      <label class="sr-only" for="import-file">가져오기</label>
+      <input id="import-file" type="file" class="hidden" accept=".xlsx,.xls,application/json"/>
+      <button id="import-open" class="inline-flex items-center gap-1 rounded-md bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-200">
+        <span class="material-symbols-outlined text-base">upload</span> 가져오기
+      </button>
+    </nav>
+  </header>
+
+  <!-- Page container -->
+  <main id="page-root" class="px-6 py-6 sm:px-10 sm:py-8 max-w-7xl mx-auto"></main>
+
+  <!-- Firebase SDKs -->
+  <script type="module">
+    // Firebase v10+ modular
+    // (App/Auth/Firestore만 사용)
+    // SDK는 firebase_init.js에서 import 합니다.
+  </script>
+
+  <!-- SheetJS (for Excel) -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.19.3/dist/xlsx.full.min.js"></script>
+
+  <!-- App scripts -->
+  <script src="./js/utils.js"></script>
+  <script src="./js/firebase_init.js"></script>
+  <script src="./js/store.js"></script>
+  <script src="./js/excel_io.js"></script>
+  <script src="./js/requisition_page.js"></script>
+  <script src="./js/workforce_page.js"></script>
+  <script src="./js/ui_router.js"></script>
+</body>
+</html>
