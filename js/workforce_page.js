@@ -1,5 +1,4 @@
 // js/workforce_page.js
-// 간결 버전: org/role/needed 중심, current/justification/timeframe은 상세 옵션
 
 window.WorkforcePage = (function(){
   function details(){
@@ -36,7 +35,9 @@ window.WorkforcePage = (function(){
     <section class="form-card">
       <div class="grid sm:grid-cols-4 gap-3">
         <input id="w-keyword" class="form-input rounded-md border-slate-300 sm:col-span-3" placeholder="검색(조직/직무/시기)"/>
-        <input id="w-org-filter" class="form-input rounded-md border-slate-300" placeholder="조직(정확히)"/>
+        <select id="w-org-filter" class="form-select rounded-md border-slate-300">
+          <option value="">조직 필터</option>
+        </select>
       </div>
       <div class="mt-3 flex items-center justify-between">
         <button id="w-apply" class="btn-xs btn-soft">필터 적용</button>
