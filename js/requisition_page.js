@@ -1,5 +1,4 @@
 // js/requisition_page.js
-// 간결 버전: 필수 입력 위주 + 상세 옵션 접기 + 칼럼 축소
 
 window.RequisitionPage = (function(){
   const STATUS = ['Draft','Open','Closed'];
@@ -12,12 +11,11 @@ window.RequisitionPage = (function(){
         <input id="f-owner" class="form-input rounded-md border-slate-300" placeholder="담당자"/>
         <input id="f-due" type="date" class="form-input rounded-md border-slate-300"/>
         <input id="f-location" class="form-input rounded-md border-slate-300" placeholder="근무지"/>
-        <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input id="chk-jd" type="checkbox" class="rounded border-slate-300"/> JD</label>
-        <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input id="chk-budget" type="checkbox" class="rounded border-slate-300"/> Budget</label>
-        <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input id="chk-approval" type="checkbox" class="rounded border-slate-300"/> Approval</label>
-        <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input id="chk-panel" type="checkbox" class="rounded border-slate-300"/> Interview Panel</label>
-        <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input id="chk-offer" type="checkbox" class="rounded border-slate-300"/> Draft Offer</label>
-        <input id="f-notes" class="form-input rounded-md border-slate-300 sm:col-span-3" placeholder="비고/메모"/>
+        <input id="f-jd" class="form-input rounded-md border-slate-300" placeholder="JD (직무 설명)"/>
+        <input id="f-budget" type="number" class="form-input rounded-md border-slate-300" placeholder="예산"/>
+        <input id="f-approval" class="form-input rounded-md border-slate-300" placeholder="승인자"/>
+        <input id="f-interviewPanel" class="form-input rounded-md border-slate-300" placeholder="면접 패널"/>
+        <input id="f-draftOffer" class="form-input rounded-md border-slate-300" placeholder="초안 제안서"/>
       </div>
     </details>`;
   }
@@ -115,11 +113,11 @@ window.RequisitionPage = (function(){
       dueDate: by('f-due')?.value || '',
       location: by('f-location')?.value || '',
       checks:{
-        jd: by('chk-jd')?.checked || false,
-        budget: by('chk-budget')?.checked || false,
-        approval: by('chk-approval')?.checked || false,
-        interviewPanel: by('chk-panel')?.checked || false,
-        draftOffer: by('chk-offer')?.checked || false,
+        jd: by('f-jd')?.value || '',
+        budget: by('f-budget')?.value || '',
+        approval: by('f-approval')?.value || '',
+        interviewPanel: by('f-interviewPanel')?.value || '',
+        draftOffer: by('f-draftOffer')?.value || '',
       }
     };
   }
@@ -133,11 +131,11 @@ window.RequisitionPage = (function(){
     if (by('f-due')) by('f-due').value = r.dueDate||'';
     if (by('f-location')) by('f-location').value = r.location||'';
     if (by('f-notes')) by('f-notes').value = r.notes||'';
-    if (by('chk-jd')) by('chk-jd').checked = !!r.checks?.jd;
-    if (by('chk-budget')) by('chk-budget').checked = !!r.checks?.budget;
-    if (by('chk-approval')) by('chk-approval').checked = !!r.checks?.approval;
-    if (by('chk-panel')) by('chk-panel').checked = !!r.checks?.interviewPanel;
-    if (by('chk-offer')) by('chk-offer').checked = !!r.checks?.draftOffer;
+    if (by('f-jd')) by('f-jd').value = r.checks?.jd || '';
+    if (by('f-budget')) by('f-budget').value = r.checks?.budget || '';
+    if (by('f-approval')) by('f-approval').value = r.checks?.approval || '';
+    if (by('f-interviewPanel')) by('f-interviewPanel').value = r.checks?.interviewPanel || '';
+    if (by('f-draftOffer')) by('f-draftOffer').value = r.checks?.draftOffer || '';
   }
 
   function clearForm(){ fillForm({ headcount:1, status:'Draft', checks:{} }); }
@@ -167,6 +165,8 @@ window.RequisitionPage = (function(){
         if (act==='del'){ if(confirm('삭제할까요?')){ await DataStore.deleteRequisition(id); await refresh(); } }
       });
     });
+
+    clearForm(); by('btn-cancel').disabled=true;
   }
 
   function bind(){
