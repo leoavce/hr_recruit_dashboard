@@ -3,7 +3,7 @@
 
 .card { box-shadow:0 4px 16px rgba(0,0,0,.06); }
 
-/* Segmented control (상단 탭 버튼) */
+/* 세그먼트 버튼 스타일 */
 .seg-control{
   display:inline-flex; gap:0; padding:4px;
   background:#f1f5f9; border:1px solid #e2e8f0;
@@ -24,31 +24,14 @@
   box-shadow: 0 6px 14px rgba(19,127,236,.22);
 }
 
-/* 상단 공용 버튼 */
+/* 폼 및 카드 버튼 스타일 */
+.form-card, .nav-ghost{
+  border:1px solid #e2e8f0; border-radius:12px;
+  padding:14px; background:#fff;
+}
 .nav-ghost{
-  display:inline-flex; align-items:center; gap:6px;
   background:#f8fafc; color:#0f172a; font-weight:600;
-  border:1px solid #e2e8f0; border-radius:10px; padding:8px 12px; font-size:13px;
+  padding:8px 12px; font-size:13px;
   transition: background .15s ease, border-color .15s ease;
 }
 .nav-ghost:hover{ background:#eef2f7; }
-
-/* 간소 테이블 */
-.table-sticky thead th{ position:sticky; top:0; background:#f8fafc; z-index:1; }
-.table-basic th, .table-basic td{ padding:8px 10px; border-top:1px solid #e5e7eb; }
-.table-basic th{ font-size:12px; color:#64748b; text-align:left; }
-
-/* 작은 버튼 */
-.btn-xs{
-  display:inline-flex; align-items:center; justify-content:center;
-  border-radius:8px; padding:4px 8px; font-size:12px; font-weight:700;
-}
-.btn-soft{ background:#f1f5f9; color:#0f172a; }
-.btn-soft:hover{ background:#e2e8f0; }
-.btn-danger{ background:#ef4444; color:#fff; }
-.btn-danger:hover{ background:#dc2626; }
-.btn-primary{ background:var(--primary); color:#fff; }
-.btn-primary:hover{ background:var(--primary-600); }
-
-/* 폼 카드 여백 축약 */
-.form-card{ background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px; }
