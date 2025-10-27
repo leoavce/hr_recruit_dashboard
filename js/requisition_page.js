@@ -9,11 +9,8 @@ window.RequisitionPage = (function(){
       <summary class="cursor-pointer text-sm text-slate-600">상세 옵션</summary>
       <div class="grid sm:grid-cols-3 gap-3 mt-3">
         <input id="f-owner" class="form-input rounded-md border-slate-300" placeholder="담당자"/>
-        <input id="f-due" type="date" class="form-input rounded-md border-slate-300"/>
+        <input id="f-due" type="date" class="form-input rounded-md border-slate-300" />
         <input id="f-location" class="form-input rounded-md border-slate-300" placeholder="근무지"/>
-        <input id="f-jd" class="form-input rounded-md border-slate-300" placeholder="JD (직무 설명)"/>
-        <input id="f-budget" type="number" class="form-input rounded-md border-slate-300" placeholder="예산"/>
-        <input id="f-approval" class="form-input rounded-md border-slate-300" placeholder="승인자"/>
         <input id="f-draftOffer" type="file" class="form-input rounded-md border-slate-300" />
       </div>
     </details>`;
