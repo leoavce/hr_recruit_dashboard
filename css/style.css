@@ -24,7 +24,7 @@
   box-shadow: 0 6px 14px rgba(19,127,236,.22);
 }
 
-/* 각 페이지 기본 카드 스타일 */
+/* 폼 및 카드 버튼 스타일 */
 .form-card, .nav-ghost{
   border:1px solid #e2e8f0; border-radius:12px;
   padding:14px; background:#fff;
@@ -35,22 +35,3 @@
   transition: background .15s ease, border-color .15s ease;
 }
 .nav-ghost:hover{ background:#eef2f7; }
-
-/* 할 일 목록 관리 및 대시보드 */
-.todo-list {
-  list-style-type: none;
-  padding: 0;
-}
-.todo-list li {
-  padding: 10px;
-  border-bottom: 1px solid #e2e8f0;
-}
-.todo-list li:last-child {
-  border-bottom: none;
-}
-
-/* 상호작용형 차트 */
-.chart-container {
-  height: 400px;
-  width: 100%;
-}
