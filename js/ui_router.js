@@ -2,14 +2,13 @@
 
 window.Router = (function() {
   const routes = {
-    '/main': window.MainPage.render,
     '/requisition': window.RequisitionPage.render,
     '/workforce': window.WorkforcePage.render,
     '/jobPosting': window.JobPostingPage.render
   };
 
   function loadPage() {
-    const path = window.location.hash || '/main';
+    const path = window.location.hash || '/requisition';
     const pageContainer = document.getElementById('page-root');
     routes[path] && routes[path](pageContainer);
   }
