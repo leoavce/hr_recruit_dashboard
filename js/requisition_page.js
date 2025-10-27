@@ -26,7 +26,7 @@ window.RequisitionPage = (function(){
         <select id="f-status" class="form-select rounded-md border-slate-300">
           ${STATUS.map(s=>`<option value="${s}">${s}</option>`).join('')}
         </select>
-        <input id="f-tags" class="form-input rounded-md border-slate-300 sm:col-span-4" placeholder="JD를 입력하세요"/>
+        <input id="f-jd" class="form-input rounded-md border-slate-300 sm:col-span-4" placeholder="JD를 입력하세요"/>
       </div>
       ${_details()}
       <div class="mt-4 flex gap-2">
@@ -58,7 +58,7 @@ window.RequisitionPage = (function(){
       <table class="min-w-full table-sticky table-basic">
         <thead>
           <tr>
-            <th>직무</th><th>인원</th><th>상태</th><th>태그</th><th>To</th><th class="w-28">작업</th>
+            <th>직무</th><th>인원</th><th>상태</th><th>JD</th><th>To</th><th class="w-28">작업</th>
           </tr>
         </thead>
         <tbody id="req-tbody"></tbody>
@@ -67,9 +67,9 @@ window.RequisitionPage = (function(){
   }
 
   function toCount(chk){
-    const keys = ['jd','budget','approval','draftOffer'];
+    const keys = ['jd','draftOffer'];
     const done = keys.filter(k=>!!chk?.[k]).length;
-    return Math.max(0, 4 - done);
+    return Math.max(0, 2 - done);
   }
 
   function rowHtml(r){
@@ -79,7 +79,7 @@ window.RequisitionPage = (function(){
       <td>${escapeHtml(r.jobTitle)}</td>
       <td>${r.headcount}</td>
       <td>${escapeHtml(r.status)}</td>
-      <td>${(r.tags||[]).map(t=>`<span class="mr-1 rounded bg-slate-100 px-2 text-xs">${escapeHtml(t)}</span>`).join('')}</td>
+      <td>${escapeHtml(r.checks?.jd || '—')}</td>
       <td>${to>0?`<span class="rounded bg-amber-100 px-2 py-0.5 text-xs text-amber-700">To ${to}</span>`:'—'}</td>
       <td>
         <button class="btn-xs btn-soft" data-act="edit" data-id="${r.id}">편집</button>
@@ -103,15 +103,9 @@ window.RequisitionPage = (function(){
       jobTitle: by('f-jobTitle').value.trim(),
       headcount: Number(by('f-headcount').value||1),
       status: by('f-status').value,
-      tags: by('f-tags').value,
-      notes: by('f-notes')?.value || '',
-      reqOwner: by('f-owner')?.value || '',
-      dueDate: by('f-due')?.value || '',
-      location: by('f-location')?.value || '',
+      jd: by('f-jd').value.trim(),
       checks:{
-        jd: by('f-jd')?.value || '',
-        budget: by('f-budget')?.value || '',
-        approval: by('f-approval')?.value || '',
+        jd: by('f-jd').value || '',
         draftOffer: by('f-draftOffer')?.files[0]?.name || '', // 파일 첨부
       }
     };
@@ -121,15 +115,7 @@ window.RequisitionPage = (function(){
     by('f-jobTitle').value = r.jobTitle||'';
     by('f-headcount').value = r.headcount||1;
     by('f-status').value = r.status||'Draft';
-    by('f-tags').value = (r.tags||[]).join(', ');
-    if (by('f-owner')) by('f-owner').value = r.reqOwner||'';
-    if (by('f-due')) by('f-due').value = r.dueDate||'';
-    if (by('f-location')) by('f-location').value = r.location||'';
-    if (by('f-notes')) by('f-notes').value = r.notes||'';
-    if (by('f-jd')) by('f-jd').value = r.checks?.jd || '';
-    if (by('f-budget')) by('f-budget').value = r.checks?.budget || '';
-    if (by('f-approval')) by('f-approval').value = r.checks?.approval || '';
-    if (by('f-draftOffer')) by('f-draftOffer').value = r.checks?.draftOffer || '';
+    by('f-jd').value = r.checks?.jd || '';
   }
 
   function clearForm(){ fillForm({ headcount:1, status:'Draft', checks:{} }); }
