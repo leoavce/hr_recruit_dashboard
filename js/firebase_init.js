@@ -4,11 +4,11 @@
 
 (function(){
   const cfg = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    appId: "YOUR_APP_ID",
-    // measurementId: "optional"
+    apiKey: "AIzaSyD0tqE_cFyVDh9egdLH0D_cyzkQo1JKKJk",
+    authDomain: "hr-recruit-board.firebaseapp.com",
+    projectId: "hr-recruit-board",
+    appId: "1:704694729297:web:96c7e9afea538002ec5670",
+    measurementId: "G-NDM3XXLYZ4"
   };
 
   // SDK 로드 (ESM 불가 환경 대비 window.firebaseApp 등으로 보관)
@@ -71,3 +71,4 @@ window.FirebaseSvc = (function(){
 
   return { getApp, getAuthInst, getDb, getUser };
 })();
+
