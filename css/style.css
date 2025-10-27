@@ -35,3 +35,28 @@
   transition: background .15s ease, border-color .15s ease;
 }
 .nav-ghost:hover{ background:#eef2f7; }
+
+/* 수정된 테이블 스타일 */
+.table-sticky th, .table-sticky td{
+  padding:12px; font-size:14px; text-align:center;
+}
+.table-sticky th{
+  background:#f8fafc; color:#64748b; font-weight:600;
+}
+.table-sticky tbody tr{
+  background:#fff; border-top:1px solid #e2e8f0;
+}
+.table-sticky tbody tr:nth-child(even){ background:#f9fafb; }
+.table-sticky td{ color:#374151; }
+
+/* 버튼 스타일 개선 */
+.btn-xs{
+  display:inline-flex; align-items:center; justify-content:center;
+  border-radius:8px; padding:6px 12px; font-size:13px; font-weight:600;
+}
+.btn-primary{ background:var(--primary); color:#fff; }
+.btn-primary:hover{ background:var(--primary-600); }
+.btn-soft{ background:#f1f5f9; color:#0f172a; }
+.btn-soft:hover{ background:#e2e8f0; }
+.btn-danger{ background:#ef4444; color:#fff; }
+.btn-danger:hover{ background:#dc2626; }
