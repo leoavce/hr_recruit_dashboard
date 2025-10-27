@@ -1,20 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>채용 업무 대시보드</title>
   <link rel="icon" href="data:image/x-icon;base64," type="image/x-icon"/>
-  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <!-- Material Symbols -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-  <!-- Fonts -->
   <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;600;800&family=Work+Sans:wght@400;600;800" onload="this.rel='stylesheet'" rel="stylesheet"/>
   <link rel="stylesheet" href="./css/style.css" />
 </head>
-<body class="bg-slate-50" style='font-family: "Work Sans","Noto Sans",sans-serif'>
-  <!-- Header -->
+<body class="bg-slate-50" style='font-family:"Work Sans","Noto Sans",sans-serif'>
   <header class="flex items-center justify-between border-b border-slate-200 px-6 py-3">
     <div class="flex items-center gap-3 text-slate-900">
       <div class="size-8 text-[#137fec]">
@@ -23,34 +19,28 @@
       <h1 class="text-lg sm:text-xl font-bold tracking-tight">채용 업무 대시보드</h1>
     </div>
 
-    <nav class="flex items-center gap-1">
-      <a href="#/requisition" class="nav-btn data-[active=true]:bg-[#137fec] data-[active=true]:text-white">채용 품의</a>
-      <a href="#/workforce" class="nav-btn data-[active=true]:bg-[#137fec] data-[active=true]:text-white">인력 계획</a>
-      <button id="export-all" class="inline-flex items-center gap-1 rounded-md bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-200">
-        <span class="material-symbols-outlined text-base">download</span> 전체 내보내기
-      </button>
-      <label class="sr-only" for="import-file">가져오기</label>
-      <input id="import-file" type="file" class="hidden" accept=".xlsx,.xls,application/json"/>
-      <button id="import-open" class="inline-flex items-center gap-1 rounded-md bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-200">
-        <span class="material-symbols-outlined text-base">upload</span> 가져오기
-      </button>
+    <nav class="flex items-center gap-8">
+      <div class="seg-control">
+        <a href="#/requisition" class="seg-btn" data-active="false">채용 품의</a>
+        <a href="#/workforce" class="seg-btn" data-active="false">인력 계획</a>
+      </div>
+
+      <div class="hidden sm:flex items-center gap-2">
+        <button id="export-all" class="nav-ghost">
+          <span class="material-symbols-outlined text-base">download</span> 내보내기
+        </button>
+        <input id="import-file" type="file" class="hidden" accept=".xlsx,.xls,application/json"/>
+        <button id="import-open" class="nav-ghost">
+          <span class="material-symbols-outlined text-base">upload</span> 가져오기
+        </button>
+      </div>
     </nav>
   </header>
 
-  <!-- Page container -->
-  <main id="page-root" class="px-6 py-6 sm:px-10 sm:py-8 max-w-7xl mx-auto"></main>
+  <main id="page-root" class="px-6 py-6 sm:px-10 sm:py-8 max-w-6xl mx-auto"></main>
 
-  <!-- Firebase SDKs -->
-  <script type="module">
-    // Firebase v10+ modular
-    // (App/Auth/Firestore만 사용)
-    // SDK는 firebase_init.js에서 import 합니다.
-  </script>
-
-  <!-- SheetJS (for Excel) -->
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.19.3/dist/xlsx.full.min.js"></script>
 
-  <!-- App scripts -->
   <script src="./js/utils.js"></script>
   <script src="./js/firebase_init.js"></script>
   <script src="./js/store.js"></script>
