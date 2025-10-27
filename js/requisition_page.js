@@ -14,8 +14,7 @@ window.RequisitionPage = (function(){
         <input id="f-jd" class="form-input rounded-md border-slate-300" placeholder="JD (직무 설명)"/>
         <input id="f-budget" type="number" class="form-input rounded-md border-slate-300" placeholder="예산"/>
         <input id="f-approval" class="form-input rounded-md border-slate-300" placeholder="승인자"/>
-        <input id="f-interviewPanel" class="form-input rounded-md border-slate-300" placeholder="면접 패널"/>
-        <input id="f-draftOffer" class="form-input rounded-md border-slate-300" placeholder="초안 제안서"/>
+        <input id="f-draftOffer" type="file" class="form-input rounded-md border-slate-300" />
       </div>
     </details>`;
   }
@@ -30,7 +29,7 @@ window.RequisitionPage = (function(){
         <select id="f-status" class="form-select rounded-md border-slate-300">
           ${STATUS.map(s=>`<option value="${s}">${s}</option>`).join('')}
         </select>
-        <input id="f-tags" class="form-input rounded-md border-slate-300 sm:col-span-4" placeholder="태그(쉼표)"/>
+        <input id="f-tags" class="form-input rounded-md border-slate-300 sm:col-span-4" placeholder="JD를 입력하세요"/>
       </div>
       ${_details()}
       <div class="mt-4 flex gap-2">
@@ -71,9 +70,9 @@ window.RequisitionPage = (function(){
   }
 
   function toCount(chk){
-    const keys = ['jd','budget','approval','interviewPanel','draftOffer'];
+    const keys = ['jd','budget','approval','draftOffer'];
     const done = keys.filter(k=>!!chk?.[k]).length;
-    return Math.max(0, 5 - done);
+    return Math.max(0, 4 - done);
   }
 
   function rowHtml(r){
@@ -116,8 +115,7 @@ window.RequisitionPage = (function(){
         jd: by('f-jd')?.value || '',
         budget: by('f-budget')?.value || '',
         approval: by('f-approval')?.value || '',
-        interviewPanel: by('f-interviewPanel')?.value || '',
-        draftOffer: by('f-draftOffer')?.value || '',
+        draftOffer: by('f-draftOffer')?.files[0]?.name || '', // 파일 첨부
       }
     };
   }
@@ -134,7 +132,6 @@ window.RequisitionPage = (function(){
     if (by('f-jd')) by('f-jd').value = r.checks?.jd || '';
     if (by('f-budget')) by('f-budget').value = r.checks?.budget || '';
     if (by('f-approval')) by('f-approval').value = r.checks?.approval || '';
-    if (by('f-interviewPanel')) by('f-interviewPanel').value = r.checks?.interviewPanel || '';
     if (by('f-draftOffer')) by('f-draftOffer').value = r.checks?.draftOffer || '';
   }
 
