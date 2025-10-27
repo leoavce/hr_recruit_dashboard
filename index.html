@@ -9,9 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
   <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;600;800&family=Work+Sans:wght@400;600;800" onload="this.rel='stylesheet'" rel="stylesheet"/>
   <link rel="stylesheet" href="./css/style.css" />
-  
-  <!-- Chart.js CDN 추가 -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-slate-50" style='font-family:"Work Sans","Noto Sans",sans-serif'>
   <header class="flex items-center justify-between border-b border-slate-200 px-6 py-3">
@@ -21,11 +18,21 @@
       </div>
       <h1 class="text-lg sm:text-xl font-bold tracking-tight">채용 업무 대시보드</h1>
     </div>
+
     <nav class="flex items-center gap-8">
       <div class="seg-control">
         <a href="#/requisition" class="seg-btn" data-active="false">채용 품의</a>
         <a href="#/workforce" class="seg-btn" data-active="false">인력 계획</a>
         <a href="#/jobPosting" class="seg-btn" data-active="false">공고 관리</a>
+      </div>
+      <div class="hidden sm:flex items-center gap-2">
+        <button id="export-all" class="nav-ghost">
+          <span class="material-symbols-outlined text-base">download</span> 내보내기
+        </button>
+        <input id="import-file" type="file" class="hidden" accept=".xlsx,.xls,application/json"/>
+        <button id="import-open" class="nav-ghost">
+          <span class="material-symbols-outlined text-base">upload</span> 가져오기
+        </button>
       </div>
     </nav>
   </header>
@@ -33,6 +40,7 @@
   <main id="page-root" class="px-6 py-6 sm:px-10 sm:py-8 max-w-6xl mx-auto"></main>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.19.3/dist/xlsx.full.min.js"></script>
+
   <script src="./js/utils.js"></script>
   <script src="./js/firebase_init.js"></script>
   <script src="./js/store.js"></script>
