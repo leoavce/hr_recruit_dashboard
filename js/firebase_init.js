@@ -39,10 +39,10 @@ window.FirebaseSvc = (function(){
     ]);
 
     const firebaseConfig = {
-      apiKey: "REPLACE_ME_apiKey",
-      authDomain: "REPLACE_ME_authDomain",
-      projectId: "REPLACE_ME_projectId",
-      appId: "REPLACE_ME_appId",
+      apiKey: "AIzaSyD0tqE_cFyVDh9egdLH0D_cyzkQo1JKKJk",
+      authDomain: "hr-recruit-board.firebaseapp.com",
+      projectId: "hr-recruit-board",
+      appId: "1:704694729297:web:96c7e9afea538002ec5670"
     };
 
     _app = initializeApp(firebaseConfig);
@@ -71,4 +71,5 @@ window.FirebaseSvc = (function(){
 
   return { getApp, getAuthInst, getDb, getUser };
 })();
+
 
