@@ -8,6 +8,7 @@ window.MainPage = (function() {
       <div id="chart" class="chart-container"></div>
       <p class="text-slate-500 mt-4">채용 품의 및 인력 계획에 대한 **상호작용형** 차트를 제공합니다.</p>
     `;
+    
     // 차트 라이브러리 예시 (Chart.js)
     const ctx = document.getElementById('chart').getContext('2d');
     new Chart(ctx, {
@@ -16,7 +17,7 @@ window.MainPage = (function() {
         labels: ['채용 품의', '인력 계획', '공고 관리'],
         datasets: [{
           label: '진행 상황',
-          data: [12, 19, 3],  // 임의 데이터
+          data: [12, 19, 3],  // 임의 데이터 (이 부분은 실제 데이터로 교체)
           backgroundColor: '#137fec',
           borderColor: '#0f6bd0',
           borderWidth: 1
